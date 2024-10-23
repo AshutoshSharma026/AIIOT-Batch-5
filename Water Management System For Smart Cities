@@ -1,1 +1,32 @@
+ // Define the pins for the float sensor and the buzzer
+int floatSensorPin = 2;
+int buzzerPin = 3;
+
+void setup() {
+  // Set the float sensor pin as input
+  pinMode(floatSensorPin, INPUT);
+
+  // Set the buzzer pin as output
+  pinMode(buzzerPin, OUTPUT);
+
+  // Start the serial communication
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read the state of the float sensor
+  int floatSensorState = digitalRead(floatSensorPin);
+
+  // Check if the float sensor is triggered
+  if (floatSensorState == HIGH) {
+    // Turn on the buzzer
+    digitalWrite(buzzerPin, HIGH);
+    Serial.println("Float sensor triggered!");
+    delay(3000);
+  } else {
+    // Turn off the buzzer
+    digitalWrite(buzzerPin, LOW);
+    Serial.println("Float sensor not triggered.");
+  }
+}
 
